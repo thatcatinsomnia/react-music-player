@@ -9,10 +9,10 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   return (
     <div className="h-screen h-full">
-      <Song playingSong={ playingSong }/>
+      <Song playingSong={playingSong}/>
       <Player 
-        playingSong={ playingSong } 
-        isPlaying={ isPlaying } 
+        playingSong={playingSong} 
+        isPlaying={isPlaying} 
         setIsPlaying={setIsPlaying}
       />
     </div>
