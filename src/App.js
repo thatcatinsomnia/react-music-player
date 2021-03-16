@@ -8,12 +8,13 @@ function App() {
   const [playingSong, setPlayingSong] = useState(songs[3]);
   const [isPlaying, setIsPlaying] = useState(false);
   return (
-    <div className="h-screen h-full">
+    <div>
       <Song playingSong={playingSong}/>
       <Player 
         playingSong={playingSong} 
         isPlaying={isPlaying} 
         setIsPlaying={setIsPlaying}
+
       />
     </div>
   );

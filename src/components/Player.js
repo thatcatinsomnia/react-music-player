@@ -6,8 +6,8 @@ import PlayerControl from './PlayerControl';
 function Player({ playingSong, isPlaying, setIsPlaying }) {
   const audioRef = useRef(null);
   const [timeInfo, setTimeInfo] = useState({
-    currentTime: null,
-    duration: null
+    currentTime: 0,
+    duration: 0
   });
 
   const timeUpdateHandler = event => {
@@ -19,7 +19,7 @@ function Player({ playingSong, isPlaying, setIsPlaying }) {
 
   return (
     <div className="h-1/5 flex flex-col items-center justify-between">
-      <PlayerTimeControl timeInfo={timeInfo}/>
+      <PlayerTimeControl timeInfo={timeInfo} setTimeInfo={setTimeInfo} audioRef={audioRef}/>
       <PlayerControl 
         playingSong={playingSong.audio} 
         audioRef={audioRef} 
