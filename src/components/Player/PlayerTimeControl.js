@@ -23,8 +23,8 @@ function PlayerTimeControl({ timeInfo, setTimeInfo, audioRef }) {
       <p className="w-14 text-center">{formatTime(timeInfo.currentTime)}</p>
       <input className="py-4 flex-1" type="range" 
         min="0" 
-        max={timeInfo.duration} 
-        value={timeInfo.currentTime}
+        max={timeInfo.duration || 0} 
+        value={timeInfo.currentTime || 0}
         step="0.000001"
         onChange={dragHandler}
       />

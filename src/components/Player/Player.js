@@ -1,21 +1,8 @@
-import { useRef, useState } from 'react';
-
 import PlayerTimeControl from './PlayerTimeControl';
 import PlayerControl from './PlayerControl';
 
-function Player({ playingSong, isPlaying, setIsPlaying }) {
-  const audioRef = useRef(null);
-  const [timeInfo, setTimeInfo] = useState({
-    currentTime: 0,
-    duration: 0
-  });
+function Player({ playingSong, isPlaying, setIsPlaying, audioRef, timeInfo, setTimeInfo }) {
 
-  const timeUpdateHandler = event => {
-    const currentTime = event.target.currentTime;
-    const duration = event.target.duration;
-
-    setTimeInfo({...timeInfo, currentTime, duration});
-  };
 
   return (
     <div className="h-1/5 flex flex-col items-center justify-between">
@@ -26,12 +13,6 @@ function Player({ playingSong, isPlaying, setIsPlaying }) {
         isPlaying={ isPlaying} 
         setIsPlaying={ setIsPlaying}
       />
-      <audio 
-        src={playingSong.audio} 
-        ref={audioRef} 
-        onTimeUpdate={timeUpdateHandler}
-        onLoadedMetadata={timeUpdateHandler}
-      ></audio>
     </div>
   );
 }
