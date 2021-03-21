@@ -1,4 +1,8 @@
 import { useEffect } from 'react';
+import { ReactComponent as ForwardIcon } from '../../assets/svg/forward.svg';
+import { ReactComponent as RewindIcon } from '../../assets/svg/rewind.svg';
+import { ReactComponent as PlayIcon } from '../../assets/svg/play.svg';
+import { ReactComponent as PauseIcon } from '../../assets/svg/pause.svg';
 
 function PlayerControl({ songs, setSongs, audioRef, isPlaying, setIsPlaying, playingSong, setPlayingSong }) {  
   useEffect(() => {
@@ -39,10 +43,18 @@ function PlayerControl({ songs, setSongs, audioRef, isPlaying, setIsPlaying, pla
   };
 
   return (
-    <div className="py-3 max-w-sm w-full flex items-center justify-between">
-      <button onClick={() => skipTrackHandler('back')}>previous</button>
-      <button onClick={playSongHandler}>{isPlaying ? 'Stop' : 'Start'}</button>
-      <button onClick={() => skipTrackHandler('forward')}>next</button>
+    <div className="py-3 max-w-sm w-full flex items-center justify-between text-gray-600">
+      <button className="hover:bg-gray-200 rounded transform hover:-translate-y-1 transition duration-200" onClick={() => skipTrackHandler('back')}>
+        <RewindIcon className="p-2 w-12 h-12 fill-current"/>
+      </button>
+
+      <button className="hover:bg-gray-200 rounded transform hover:-translate-y-1 transition duration-200" onClick={playSongHandler}>
+        {isPlaying ? <PauseIcon className="p-2 w-12 h-12 fill-current" /> : <PlayIcon className="p-2 w-12 h-12 fill-current"/>}
+      </button>
+
+      <button className="hover:bg-gray-200 rounded transform hover:-translate-y-1 transition duration-200" onClick={() => skipTrackHandler('forward')}>
+        <ForwardIcon className="p-2 w-12 h-12 fill-current"/>
+      </button>
     </div>
   );
 }
