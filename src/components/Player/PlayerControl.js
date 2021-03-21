@@ -42,7 +42,7 @@ function PlayerControl({ songs, setSongs, audioRef, isPlaying, setIsPlaying, pla
       </button>
 
       <button className="hover:bg-gray-200 rounded transform hover:-translate-y-1 transition duration-200" onClick={playSongHandler}>
-        {isPlaying ? <PauseIcon className="p-2 w-10 h-10 fill-current" /> : <PlayIcon className="p-2 w-10 h-10 fill-current"/>}
+        {isPlaying ? <PauseIcon className="p-2 w-12 h-12 fill-current" /> : <PlayIcon className="p-2 w-12 h-12 fill-current"/>}
       </button>
 
       <button className="hover:bg-gray-200 rounded transform hover:-translate-y-1 transition duration-200" onClick={() => skipTrackHandler('forward')}>
