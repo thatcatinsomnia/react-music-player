@@ -16,18 +16,6 @@ function LibrarySong({ song, songs, setSongs, setPlayingSong, audioRef, isPlayin
 
     setSongs(newSongs);
     setPlayingSong(song);
-
-    if (isPlaying) {
-      // play() call on a <video> or <audio> element will return promise
-      // watch more on: https://developers.google.com/web/updates/2016/03/play-returns-promise
-      const playPromise = audioRef.current.play();
-      
-      if(playPromise !== undefined) {
-        playPromise.then(() => {
-          audioRef.current.play();
-        });
-      }
-    }
   };
 
   return (

@@ -28,7 +28,7 @@ function PlayerTimeControl({ timeInfo, setTimeInfo, audioRef }) {
         step="0.000001"
         onChange={dragHandler}
       />
-      <p className="w-14 text-center">{formatTime(timeInfo.duration)}</p>
+      <p className="w-14 text-center">{timeInfo.duration ? formatTime(timeInfo.duration) : '00:00' }</p>
     </div>
   );
 }

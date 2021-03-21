@@ -16,22 +16,19 @@ function App() {
     duration: 0
   });
 
-  const timeUpdateHandler = event => {
-    const currentTime = event.target.currentTime;
-    const duration = event.target.duration;
-
-    setTimeInfo({...timeInfo, currentTime, duration});
-  };
-
   return (
     <div>
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <SongInfo playingSong={playingSong}/>
       <Player 
+        songs={songs}
+        setSongs={setSongs}
         playingSong={playingSong} 
+        setPlayingSong={setPlayingSong}
         isPlaying={isPlaying} 
         setIsPlaying={setIsPlaying}
         audioRef={audioRef}
+        setTimeInfo={setTimeInfo}
         timeInfo={timeInfo}
         setTiemInfo={setTimeInfo}
       />
@@ -43,12 +40,6 @@ function App() {
         isPlaying={isPlaying} 
         libraryStatus={libraryStatus}
       />
-      <audio 
-        src={playingSong.audio} 
-        ref={audioRef} 
-        onTimeUpdate={timeUpdateHandler}
-        onLoadedMetadata={timeUpdateHandler}
-      ></audio>
     </div>
   );
 }
