@@ -1,27 +1,19 @@
-import { useEffect } from 'react';
 import { ReactComponent as ForwardIcon } from '../../assets/svg/forward.svg';
 import { ReactComponent as RewindIcon } from '../../assets/svg/rewind.svg';
 import { ReactComponent as PlayIcon } from '../../assets/svg/play.svg';
 import { ReactComponent as PauseIcon } from '../../assets/svg/pause.svg';
 
 function PlayerControl({ songs, setSongs, audioRef, isPlaying, setIsPlaying, playingSong, setPlayingSong }) {  
-  useEffect(() => {
-    const newSongs = songs.map(song => {
-      if (song.id === playingSong.id) {
-        return {
-          ...song,
-          active: true
-        }
-      } else {
-        return {
-          ...song,
-          active: false
-        }
-      }
-    });
+  const activeLibraryHandler = (nextOrPrev) => {
+    songs.map(song => {
+      let active = song.id === playingSong.id;
 
-    setSongs(newSongs);
-  }, [playingSong]);
+      return {
+        ...song,
+        active
+      };
+    });
+  }
   
   const playSongHandler = event => {
     if (isPlaying) {
@@ -40,6 +32,7 @@ function PlayerControl({ songs, setSongs, audioRef, isPlaying, setIsPlaying, pla
     if (newIndex < 0) newIndex = songs.length - 1;
     
     setPlayingSong(songs[newIndex]);
+    activeLibraryHandler(songs[newIndex])
   };
 
   return (
