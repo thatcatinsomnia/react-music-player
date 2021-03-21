@@ -17,7 +17,7 @@ function App() {
   });
 
   return (
-    <div>
+    <div className="h-screen flex flex-col">
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <SongInfo playingSong={playingSong}/>
       <Player 
@@ -39,6 +39,7 @@ function App() {
         audioRef={audioRef} 
         isPlaying={isPlaying} 
         libraryStatus={libraryStatus}
+        setLibraryStatus={setLibraryStatus}
       />
     </div>
   );

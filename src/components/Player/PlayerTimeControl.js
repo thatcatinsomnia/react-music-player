@@ -19,8 +19,8 @@ function PlayerTimeControl({ timeInfo, setTimeInfo, audioRef }) {
   };
 
   return (
-    <div className="py-4 max-w-lg w-full flex items-center text-gray-500">
-      <p className="w-14 text-center">{formatTime(timeInfo.currentTime)}</p>
+    <div className="px-1 py-4 max-w-xl w-full flex items-center text-gray-500">
+      <p className="w-14 text-center text-sm sm:text-lg sm:w-16 sm:px-2">{formatTime(timeInfo.currentTime)}</p>
       <input className="py-4 flex-1" type="range" 
         min="0" 
         max={timeInfo.duration || 0} 
@@ -28,7 +28,7 @@ function PlayerTimeControl({ timeInfo, setTimeInfo, audioRef }) {
         step="0.000001"
         onChange={dragHandler}
       />
-      <p className="w-14 text-center">{timeInfo.duration ? formatTime(timeInfo.duration) : '00:00' }</p>
+      <p className="w-14 text-center text-sm sm:text-lg sm:w-16 sm:px-2">{timeInfo.duration ? formatTime(timeInfo.duration) : '00:00' }</p>
     </div>
   );
 }

@@ -43,17 +43,17 @@ function PlayerControl({ songs, setSongs, audioRef, isPlaying, setIsPlaying, pla
   };
 
   return (
-    <div className="py-3 max-w-sm w-full flex items-center justify-between text-gray-600">
+    <div className="px-4 py-3 mb-2 max-w-xl w-full flex items-center justify-between text-gray-600">
       <button className="hover:bg-gray-200 rounded transform hover:-translate-y-1 transition duration-200" onClick={() => skipTrackHandler('back')}>
-        <RewindIcon className="p-2 w-12 h-12 fill-current"/>
+        <RewindIcon className="p-2 w-10 h-10 fill-current"/>
       </button>
 
       <button className="hover:bg-gray-200 rounded transform hover:-translate-y-1 transition duration-200" onClick={playSongHandler}>
-        {isPlaying ? <PauseIcon className="p-2 w-12 h-12 fill-current" /> : <PlayIcon className="p-2 w-12 h-12 fill-current"/>}
+        {isPlaying ? <PauseIcon className="p-2 w-10 h-10 fill-current" /> : <PlayIcon className="p-2 w-10 h-10 fill-current"/>}
       </button>
 
       <button className="hover:bg-gray-200 rounded transform hover:-translate-y-1 transition duration-200" onClick={() => skipTrackHandler('forward')}>
-        <ForwardIcon className="p-2 w-12 h-12 fill-current"/>
+        <ForwardIcon className="p-2 w-10 h-10 fill-current"/>
       </button>
     </div>
   );

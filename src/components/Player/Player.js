@@ -22,7 +22,7 @@ function Player({ songs, setSongs, playingSong, setPlayingSong, isPlaying, setIs
   };
   
   return (
-    <div className="h-1/5 flex flex-col items-center justify-between">
+    <div className="flex flex-col items-center justify-between">
       <PlayerTimeControl timeInfo={timeInfo} setTimeInfo={setTimeInfo} audioRef={audioRef}/>
       <PlayerControl 
         songs={songs}
