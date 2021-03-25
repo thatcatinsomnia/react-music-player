@@ -1,31 +1,14 @@
-function LibrarySong({ song, songs, setSongs, setPlayingSong, audioRef, isPlaying }) {
-  const songSelectHandler = () => {
-    const newSongs = songs.map(s => {
-      if (s.id === song.id) {
-        return {
-          ...s,
-          active: true
-        }
-      } else {
-        return {
-          ...s,
-          active: false
-        }
-      }
-    });
-
-    setSongs(newSongs);
-    setPlayingSong(song);
-  };
+function LibrarySong({ song, pickedSong,  setPickedSong }) {
+  const isPlaying = pickedSong.id === song.id;
 
   return (
-    <div className={`mt-1 px-3 sm:px-6 py-3 flex items-center cursor-pointer ${song.active ? 'bg-purple-800 hover:bg-purple-800' : 'hover:bg-purple-100'}`}
-      onClick={songSelectHandler}
+    <div className={`mt-1 px-3 sm:px-6 py-3 flex items-center cursor-pointer ${isPlaying ? 'bg-purple-800 hover:bg-purple-800' : 'hover:bg-purple-100'}`}
+      onClick={() => setPickedSong(song)}
     >
       <img src={song.img} alt={song.title} className="w-20"/>
       <div className="ml-3">
-        <h3 className={`text-md sm:text-lg  ${song.active ? 'text-gray-50' : 'text-gray-600'}`}>{song.title}</h3>
-        <h4 className={`text-xs sm:text-xs  ${song.active ? 'text-gray-200' : 'text-gray-500'}`}>{song.artists.join(', ')}</h4>
+        <h3 className={`text-md sm:text-lg  ${isPlaying ? 'text-gray-50' : 'text-gray-600'}`}>{song.title}</h3>
+        <h4 className={`text-xs sm:text-xs  ${isPlaying ? 'text-gray-200' : 'text-gray-500'}`}>{song.artists.join(', ')}</h4>
       </div>
     </div>
   )

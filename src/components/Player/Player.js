@@ -2,7 +2,7 @@ import PlayerTimeControl from './PlayerTimeControl';
 import PlayerControl from './PlayerControl';
 
 
-function Player({ songs, setSongs, playingSong, setPlayingSong, isPlaying, setIsPlaying, audioRef, timeInfo, setTimeInfo }) {
+function Player({ songs, pickedSong, setPickedSong, isTrackPlaying, setIsTrackPlaying, timeInfo, setTimeInfo, audioRef }) {
   const timeUpdateHandler = event => {
     const currentTime = event.target.currentTime;
     const duration = event.target.duration;
@@ -11,37 +11,36 @@ function Player({ songs, setSongs, playingSong, setPlayingSong, isPlaying, setIs
   };
 
   const songEndHandler = () => {
-    let index = songs.findIndex(song => song.id === playingSong.id);
+    let index = songs.findIndex(song => song.id === pickedSong.id);
     let newIndex = (index + 1) % songs.length;
-
-    setPlayingSong(songs[newIndex]);
+    
+    setPickedSong(songs[newIndex]);
   };
 
   const handleLoadAudio = () => {
-    if (isPlaying) audioRef.current.play();
+    if (isTrackPlaying) audioRef.current.play();
   };
   
   return (
     <div className="flex flex-col items-center justify-between">
       <PlayerTimeControl timeInfo={timeInfo} setTimeInfo={setTimeInfo} audioRef={audioRef}/>
       <PlayerControl 
+        audioRef={audioRef}
         songs={songs}
-        setSongs={setSongs}
-        playingSong={playingSong} 
-        setPlayingSong={setPlayingSong}
-        audioRef={audioRef} 
-        isPlaying={isPlaying} 
-        setIsPlaying={ setIsPlaying}
+        isTrackPlaying={isTrackPlaying} 
+        setIsTrackPlaying={ setIsTrackPlaying}
+        pickedSong={pickedSong} 
+        setPickedSong={setPickedSong}
       />
 
       <audio 
-        src={playingSong.audio} 
+        src={pickedSong.audio} 
         ref={audioRef} 
         onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler}
         onEnded={songEndHandler}
         onLoadedData={handleLoadAudio}
-      ></audio>
+        ></audio>
     </div>
   );
 }

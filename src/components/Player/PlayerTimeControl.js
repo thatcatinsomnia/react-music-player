@@ -1,4 +1,4 @@
-function PlayerTimeControl({ timeInfo, setTimeInfo, audioRef }) {
+function PlayerTimeControl({ audioRef, timeInfo, setTimeInfo }) {
   const getMinutes = time => {
     return ('0' + Math.floor(time / 60)).slice(-2);
   };

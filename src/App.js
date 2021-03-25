@@ -1,16 +1,16 @@
 import { useState, useRef } from 'react';
 import Player from './components/Player/Player';
-import SongInfo from './components/SongInfo';
+import Track from './components/Track';
 import chillHop from './data/chillHop';
 import Library from './components/Library/Library';
 import Nav from './components/Nav';
 
 function App() {
-  const [songs, setSongs] = useState(chillHop());
-  const [playingSong, setPlayingSong] = useState(songs[0]);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const songs = chillHop();
   const audioRef = useRef(null);
-  const [libraryStatus, setLibraryStatus] = useState(false);
+  const [pickedSong, setPickedSong] = useState(songs[0]);
+  const [isTrackPlaying, setIsTrackPlaying] = useState(false);
+  const [isLibraryOpen, setIsLibraryOpen] = useState(false);
   const [timeInfo, setTimeInfo] = useState({
     currentTime: 0,
     duration: 0
@@ -18,28 +18,27 @@ function App() {
 
   return (
     <div className="h-screen flex flex-col">
-      <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
-      <SongInfo playingSong={playingSong}/>
+      <Nav isLibraryOpen={isLibraryOpen} setIsLibraryOpen={setIsLibraryOpen} />
+      <Track pickedSong={pickedSong}/>
       <Player 
         songs={songs}
-        setSongs={setSongs}
-        playingSong={playingSong} 
-        setPlayingSong={setPlayingSong}
-        isPlaying={isPlaying} 
-        setIsPlaying={setIsPlaying}
-        audioRef={audioRef}
-        setTimeInfo={setTimeInfo}
+        pickedSong={pickedSong}
+        setPickedSong={setPickedSong}
+        isTrackPlaying={isTrackPlaying} 
+        setIsTrackPlaying={setIsTrackPlaying}
         timeInfo={timeInfo}
-        setTiemInfo={setTimeInfo}
+        setTimeInfo={setTimeInfo}
+        audioRef={audioRef}
       />
+      
       <Library 
         songs={songs} 
-        setSongs={setSongs} 
-        setPlayingSong={setPlayingSong} 
+        pickedSong={pickedSong}
+        setPickedSong={setPickedSong}
         audioRef={audioRef} 
-        isPlaying={isPlaying} 
-        libraryStatus={libraryStatus}
-        setLibraryStatus={setLibraryStatus}
+        isTrackPlaying={isTrackPlaying} 
+        isLibraryOpen={isLibraryOpen}
+        setIsLibraryOpen={setIsLibraryOpen}
       />
     </div>
   );
